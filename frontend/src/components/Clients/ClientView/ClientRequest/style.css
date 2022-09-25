@@ -1,0 +1,73 @@
+
+
+.ticket{
+    margin-bottom: 10px;
+}
+
+.tab-panel{
+    width: 100%;
+}
+
+.ticket-detail__wrapper{
+    width: 100%;
+    font-size: 14px;
+}
+
+.ticket-detail__description{
+    width: 93%;
+    margin-left: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.description-text__wrapper{
+    display: flex;
+    font-weight: bold;
+}
+
+.description-text__rubric{
+    font-weight: normal;
+}
+
+.ticket-detail__fields{
+    width: 100%;
+    display: flex;
+    padding-top: 20px;
+}
+
+.ticket-detail__field-description-wrapper{
+    width: 63%;
+}
+
+.ticket-detail__field-file-wrapper{
+    width: 30%;
+    margin-left: 80px;
+}
+
+.ticket-detail__field-description{
+    width: 100%;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    min-height: 80px;
+    padding: 20px;
+    font-size: 14px;
+    border: 1px #e0e0e0 solid;
+}
+
+.ticket-detail__field-file{
+    width: 70%;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    min-height: 80px;
+    padding: 10px;
+    padding: 20px;
+    font-size: 14px;
+    border: 1px #e0e0e0 solid;
+}
+
+.MuiTab-root.MuiTab-textColorInherit.Mui-selected{
+    background-color: #f5f5f5;
+    color: #1976d2;
+}

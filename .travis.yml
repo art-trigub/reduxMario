@@ -1,0 +1,70 @@
+sudo: required
+services:
+  - docker
+env:
+  matrix:
+    - DOCKER_COMPOSE_VERSION=1.22.0
+  global:
+    - PATH=$HOME/.local/bin:$PATH
+addons:
+  hosts:
+    - site.metrica.fun
+cache:
+  directories:
+    - frontend/node_modules
+    - backend/vendor
+    - test-site/node_modules
+before_install:
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+  - docker-compose -v
+  - sudo sysctl -w vm.max_map_count=262144
+  - pip install requests[security]
+  - pip install --user awscli
+  - sudo groupadd -g 1000 metrica-group
+  - sudo usermod -a -G 1000 travis
+  - $(aws ecr get-login --region ${AWS_REGION} --no-include-email)
+  - cp backend/.env.travis backend/.env
+  - cp frontend/.env.travis frontend/.env
+  - cp test-site/.env.travis test-site/.env
+  - docker-compose -f docker-compose.test.yml run --rm node npm ci
+  - docker-compose -f docker-compose.test.yml run --rm test-site npm ci
+  - docker-compose -f docker-compose.test.yml run --rm test-site npm run build
+  - docker-compose -f docker-compose.test.yml run --rm node npm run build
+  - docker-compose -f docker-compose.test.yml run --rm node npm run build:script
+  - ./.scripts/build.sh app
+  - ./.scripts/build.sh webserver
+script:
+  - docker-compose -f docker-compose.test.yml up -d
+  - docker-compose -f docker-compose.test.yml ps
+  - docker-compose -f docker-compose.test.yml exec app composer install
+  - docker-compose -f docker-compose.test.yml exec app php artisan key:generate
+  - docker-compose -f docker-compose.test.yml exec app php artisan jwt:secret
+  - until curl --silent -XGET --fail http://localhost:9200; do printf '.'; sleep 1; done
+  - docker-compose -f docker-compose.test.yml exec app php artisan migrate
+  - docker-compose -f docker-compose.test.yml exec app php artisan db:seed --class=DefaultUserAndWebsiteSeeder
+  - docker-compose -f docker-compose.test.yml exec app ./vendor/bin/phpunit
+  - docker-compose -f docker-compose.test.yml run node npm run lint
+after_script:
+  - docker-compose -f docker-compose.test.yml down
+  - docker image rm -f metrica/app:latest
+  - docker image rm -f metrica/webserver:latest
+  - docker rmi -f $(docker images | grep "^<none>" | awk "{print $3}")
+  - docker images
+branches:
+  only:
+    - master
+    - develop
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: "bash .scripts/deploy.sh"
+    on:
+      branch: master
+  - provider: script
+    skip_cleanup: true
+    script: "bash .scripts/deploy.sh"
+    on:
+      branch: develop

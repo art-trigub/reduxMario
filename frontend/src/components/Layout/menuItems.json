@@ -1,0 +1,113 @@
+[
+    {
+        "name": "clients",
+        "iconName": "crop_original",
+        "children": [
+            {
+                "name": "Users",
+                "iconName": "supervised_user_circle",
+                "url": "/users"
+            },
+            {
+                "name": "Clients",
+                "iconName": "people",
+                "url": "/clients"
+            },
+            {
+                "name": "Products",
+                "iconName": "work",
+                "url": "/products"
+            },
+            {
+                "name": "Libraries",
+                "iconName": "book",
+                "url": "/libraries"
+            },
+            {
+                "name": "Requests",
+                "iconName": "person_add_alt_1",
+                "url": "/requests"
+            },
+            {
+                "name": "services",
+                "iconName": "crop_original",
+                "children": [
+                    {
+                        "name": "services1",
+                        "iconName": "crop_original",
+                        "url": "/services1"
+                    },
+                    {
+                        "name": "services2",
+                        "iconName": "crop_original",
+                        "url": "/services2"
+                    },
+                    {
+                        "name": "qwe",
+                        "iconName": "crop_original",
+                        "children": [
+                            {
+                                "name": "qwe1",
+                                "iconName": "crop_original",
+                                "url": "/qwe1"
+                            },
+                            {
+                                "name": "qwe2",
+                                "iconName": "crop_original",
+                                "url": "/qwe1/qwe2"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Item4",
+        "iconName": "crop_original",
+        "children": [
+            {
+                "name": "Child41",
+                "iconName": "crop_original",
+                "url": "/child41"
+            },
+            {
+                "name": "Child42",
+                "iconName": "crop_original",
+                "url": "/child42"
+            },
+            {
+                "name": "Child43",
+                "iconName": "crop_original",
+                "children": [
+                    {
+                        "name": "Child431",
+                        "iconName": "crop_original",
+                        "url": "/child431"
+                    },
+                    {
+                        "name": "Child432",
+                        "iconName": "crop_original",
+                        "url": "/child432"
+                    },
+                    {
+                        "name": "Child435",
+                        "iconName": "crop_original",
+                        "children": [
+                            {
+                                "name": "Child123123",
+                                "iconName": "crop_original",
+                                "url": "/Child123123"
+                            },
+                            {
+                                "name": "213123123",
+                                "iconName": "crop_original",
+                                "url": "/213123123"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

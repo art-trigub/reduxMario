@@ -1,0 +1,8 @@
+.DS_Store
+.persist
+.idea
+.vscode
+.env
+docker-compose.override.yml
+.bashrc*
+node_modules

@@ -1,0 +1,40 @@
+[
+    {
+        "id": 1,
+        "productId": 1,
+        "name": "catName1",
+        "fields": [
+            {
+                "id": 1,
+                "type": "productCatFieldType1",
+                "label": "productCatFieldLabel1",
+                "value": "productCatFieldValue1"
+            },
+            {
+                "id": 2,
+                "type": "productCatFieldType2",
+                "label": "productCatFieldLabel2",
+                "value": "productCatFieldValue2"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "productId": 2,
+        "name": "catName2",
+        "fields": [
+            {
+                "id": 1,
+                "type": "productCatFieldType1",
+                "label": "productCatFieldLabel1",
+                "value": "productCatFieldValue1"
+            },
+            {
+                "id": 2,
+                "type": "productCatFieldType2",
+                "label": "productCatFieldLabel2",
+                "value": "productCatFieldValue2"
+            }
+        ]
+    }
+]
