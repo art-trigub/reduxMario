@@ -4,55 +4,38 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api;
 
-use App\Actions\Department\GetDepartmentAction;
-use App\Actions\Role\GetRoleAction;
-use App\Http\Requests\User\UpdateUserHttpRequest;
-use App\Http\Resources\GetDepartmentResource;
-use App\Http\Resources\GetRoleResource;
-use App\Http\Resources\GetUsersResource;
+use App\Actions\User\UpdateUserAction;
+use App\Actions\User\UpdateUserPasswordAction;
+use App\Actions\User\UpdateUserPasswordRequest;
+use App\Actions\User\UpdateUserRequest;
+use App\Http\Requests\Auth\UpdatePasswordHttpRequest;
+use App\Http\Requests\Auth\UpdateUserHttpRequest;
+use App\Http\Resources\MessageResource;
 use App\Http\Resources\UserResource;
 use App\Http\Response\ApiResponse;
 use App\Http\Controllers\Controller;
-use App\Services\User\UserService;
-use Illuminate\Http\Request;
 
 final class UserController extends Controller
 {
-    private $roleAction;
-    private $getDepartmentAction;
-    private $userService;
+    private $updateUserAction;
+    private $updateUserPasswordAction;
 
-    public function __construct(
-        UserService $userService,
-        GetRoleAction $roleAction,
-        GetDepartmentAction $getDepartmentAction
-    )
+    public function __construct(UpdateUserAction $updateUserAction, UpdateUserPasswordAction $updateUserPasswordAction)
     {
-        $this->roleAction = $roleAction;
-        $this->getDepartmentAction = $getDepartmentAction;
-        $this->userService = $userService;
-    }
-
-    public function getUserById(int $id): ApiResponse
-    {
-        $request = request()->merge(['id' => $id]);
-
-        return  ApiResponse::success(new UserResource($this->userService->getOneResultOrFail($request)));
+        $this->updateUserAction = $updateUserAction;
+        $this->updateUserPasswordAction = $updateUserPasswordAction;
     }
 
     public function update(UpdateUserHttpRequest $request): ApiResponse
     {
-        $role = $this->roleAction->execute();
-        $department = $this->getDepartmentAction->execute();
-        return ApiResponse::success(new UserResource($this->userService->set($request)),
-            [
-                'departments' => new GetDepartmentResource($department->department()),
-                'roles' => new GetRoleResource($role->role())
-            ]);
+        $response = $this->updateUserAction->execute(UpdateUserRequest::fromRequest($request));
+
+        return ApiResponse::success(new UserResource($response->user()));
     }
 
-    public function index(Request $request)
+    public function updatePassword(UpdatePasswordHttpRequest $request):ApiResponse
     {
-        return ApiResponse::createPaginatedResponse(new GetUsersResource(collect($this->userService->getCollections($request))));
+        $response = $this->updateUserPasswordAction->execute(UpdateUserPasswordRequest::fromRequest($request));
+        return  ApiResponse::success(new MessageResource($response));
     }
 }

@@ -1,9 +1,10 @@
 <?php
 
-/** @var \LaravelDoctrine\ORM\Testing\Factory $factory */
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+
 use App\Entities\User;
+use Illuminate\Support\Str;
 use Faker\Generator as Faker;
-use LaravelDoctrine\ORM\Facades\EntityManager;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,21 +18,12 @@ use LaravelDoctrine\ORM\Facades\EntityManager;
 */
 
 $factory->define(User::class, function (Faker $faker) {
-
     return [
-        'first_name' => $faker->firstName,
-        'last_name' => $faker->firstName,
+        'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'phone_number' => $faker->unique()->phoneNumber,
-        'role' =>  EntityManager::createQueryBuilder()->select('t')
-            ->from(\App\Entities\Role::CLASS, 't')
-            ->setMaxResults(1)
-            ->setFirstResult(mt_rand(0, 5 - 1))->getQuery()->getSingleResult(),
-        'login' => $faker->unique()->word . date("YmdHis"),
-        'date_of_birth' => $faker->dateTime,
-        'date_start' => $faker->dateTime,
-        'created_at' => $faker->dateTime,
+        'is_activate' => 1,
+        'email_verified_at' => now(),
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-
+        'remember_token' => Str::random(10),
     ];
 });

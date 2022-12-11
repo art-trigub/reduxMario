@@ -5,18 +5,14 @@ declare(strict_types=1);
 namespace App\Repositories\Contracts;
 
 use App\Entities\User;
-use Doctrine\Common\Collections\Criteria;
 
 interface UserRepository
 {
-    public function getById(int $id);
-
-    public function search(Criteria $criteria);
-
-    public function getAll():array;
+    public function getById(int $id): User;
 
     public function save(User $user): User;
 
-    public function getByLogin(string $login): ?User;
+    public function getByEmail(string $email): ?User;
 
+    public function activateUser(string $email): void;
 }

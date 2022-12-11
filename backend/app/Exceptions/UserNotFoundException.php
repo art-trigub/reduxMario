@@ -9,13 +9,13 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Response;
 use Throwable;
 
-final class UserNotFoundException extends \Exception implements ApiException
+final class UserNotFoundException extends ModelNotFoundException implements ApiException
 {
     protected $message = "User not found.";
 
     public function __construct($message = "", $code = 0, Throwable $previous = null)
     {
-        parent::__construct($this->message, $code, $previous);
+        parent::__construct($this->$message, $code, $previous);
     }
 
     public function getStatus(): int

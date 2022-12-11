@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Requests\Auth;
 
+
+
 use App\Http\Requests\ApiFormRequest;
 
 final class AuthenticatedHttpRequest extends ApiFormRequest
@@ -11,17 +13,17 @@ final class AuthenticatedHttpRequest extends ApiFormRequest
     public function rules(): array
     {
         return [
-            'login' => 'required|exists:App\Entities\User,login',
+            'email' => 'required|email|exists:users,email',
             'password' => 'required|string|min:8'
         ];
     }
 
-    public function login(): ?string
+    public function email(): ?string
     {
-        return $this->get('login');
+        return $this->get('email');
     }
 
-    public function userPassword(): ?string
+    public function password(): ?string
     {
         return $this->get('password');
     }
@@ -30,7 +32,7 @@ final class AuthenticatedHttpRequest extends ApiFormRequest
     {
         parent::messages();
         return [
-            'login.exists' => "User doesn't exist"
+            'email.exists' => "User doesn't exist"
         ];
     }
 }

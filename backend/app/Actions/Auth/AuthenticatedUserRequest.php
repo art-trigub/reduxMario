@@ -8,32 +8,31 @@ use App\Http\Requests\Auth\AuthenticatedHttpRequest;
 
 final class AuthenticatedUserRequest
 {
-    private $login;
+    private $email;
     private $password;
 
     public function __construct(
-        string $login,
+        string $email,
         string $password
     ) {
-        $this->login = $login;
+        $this->email = $email;
         $this->password = $password;
     }
 
     public static function fromRequest(AuthenticatedHttpRequest $request): self
     {
-
         return new static(
-            $request->login(),
-            $request->userPassword()
+            $request->email(),
+            $request->password()
         );
     }
 
-    public function getLogin(): string
+    public function getEmail(): string
     {
-        return $this->login;
+        return $this->email;
     }
 
-    public function getUserPassword(): string
+    public function getPassword(): string
     {
         return $this->password;
     }

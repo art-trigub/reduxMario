@@ -1,22 +1,20 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { useTranslation } from "react-i18next";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
-import Typography from "@material-ui/core/Typography";
-import Container from "@material-ui/core/Container";
-import Box from "@material-ui/core/Box";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import LangSelector from "../Layout/LangSelector/LangSelector";
+
+import { useTheme } from "@mui/material/styles";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import CircularProgress from "@mui/material/CircularProgress";
 import { Formik, Form } from "formik";
 import { authorize, getAuthUser } from "../../api/auth";
 import { setUserTokenLocal, setUserDataLocal, setLoggedUserLocal } from "../../store/actions/auth";
 
 function SignIn({ setUserTokenLocal, setUserDataLocal, setLoggedUserLocal }) {
-	const classes = useStyles();
 
-	const { t } = useTranslation();
+
+
 
 	const theme = useTheme();
 
@@ -24,12 +22,10 @@ function SignIn({ setUserTokenLocal, setUserDataLocal, setLoggedUserLocal }) {
 
 	return (
 		<>
-			<Box display="flex" justifyContent="flex-end" p={1}>
-				<LangSelector colorValue={theme.palette.primary.main} />
-			</Box>
-			<Container className={classes.container} maxWidth="xs">
+
+			<Container  maxWidth="xs">
 				<Typography align="center" component="h1" variant="h5">
-					{t("welcomeToCrm")}
+					{"welcomeToCrm"}
 				</Typography>
 
 				<Formik
@@ -37,10 +33,10 @@ function SignIn({ setUserTokenLocal, setUserDataLocal, setLoggedUserLocal }) {
 					validate={(values) => {
 						const errors = {};
 						if (!values.login) {
-							errors.login = `${t("requiredField")}`;
+							errors.login = "requiredField";
 						}
 						if (!values.password) {
-							errors.password = `${t("requiredField")}`;
+							errors.password = "requiredField";
 						}
 						return errors;
 					}}
@@ -63,11 +59,11 @@ function SignIn({ setUserTokenLocal, setUserDataLocal, setLoggedUserLocal }) {
 					}}
 				>
 					{(props) => (
-						<Form className={classes.form} onSubmit={props.handleSubmit}>
+						<Form  onSubmit={props.handleSubmit}>
 							<TextField
 								margin="normal"
 								fullWidth
-								label={t("login")}
+								label="login"
 								name="login"
 								type="text"
 								error={props.errors.login && props.touched.login}
@@ -79,7 +75,7 @@ function SignIn({ setUserTokenLocal, setUserDataLocal, setLoggedUserLocal }) {
 							<TextField
 								margin="normal"
 								fullWidth
-								label={t("password")}
+								label="password"
 								name="password"
 								type="password"
 								error={props.errors.password && props.touched.password}
@@ -88,23 +84,23 @@ function SignIn({ setUserTokenLocal, setUserDataLocal, setLoggedUserLocal }) {
 								value={props.values.password}
 								helperText={props.errors.password && props.touched.password && props.errors.password}
 							/>
-							<div className={classes.wrapper}>
+							<div>
 								<Button
 									type="submit"
 									fullWidth
 									variant="contained"
 									color="primary"
-									className={classes.submit}
+
 									disabled={props.isSubmitting}
 								>
-									{t("entrance")}
+									{"entrance"}
 								</Button>
 								{props.isSubmitting && (
-									<CircularProgress size={24} className={classes.buttonProgress} />
+									<CircularProgress size={24}  />
 								)}
 							</div>
 
-							{formErrors && `${t("somethingWrong")}`}
+							{formErrors && "somethingWrong"}
 						</Form>
 					)}
 				</Formik>
@@ -125,36 +121,3 @@ const mapDispatchToProps = {
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
 
-const useStyles = makeStyles((theme) => ({
-	container: {
-		height: "80vh",
-		display: "flex",
-		justifyContent: "center",
-		flexDirection: "column",
-	},
-	paper: {
-		marginTop: theme.spacing(8),
-		display: "flex",
-		flexDirection: "column",
-		alignItems: "center",
-	},
-	form: {
-		display: "flex",
-		flexDirection: "column",
-	},
-	submit: {
-		margin: theme.spacing(3, 0, 2),
-	},
-	wrapper: {
-		position: "relative",
-		marginTop: 10,
-	},
-	buttonProgress: {
-		color: theme.palette.primary.main,
-		position: "absolute",
-		top: "50%",
-		left: "50%",
-		marginTop: -10,
-		marginLeft: -12,
-	},
-}));
