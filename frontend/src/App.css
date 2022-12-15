@@ -17,6 +17,40 @@ html {
   }
 }
 
+
+.telegraph__container {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  padding: 30px;
+  
+}
+
+.telegraph__buttons_wrap{
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 100px;
+}
+
+.telegraph__text_line_elem{
+  padding: 20px;
+  border: #2F80F0 1px solid;
+  width: 100%;
+  text-align: left;
+  outline: none;
+  height: 500px;
+}
+
+/* .codex-editor--empty{
+  visibility: hidden;
+} */
+
+#editorjs{
+    height: 200px;
+    cursor: pointer;
+}
+
 .content_container{
   max-width: 1000px;
   margin: 20px auto;
@@ -213,7 +247,7 @@ html {
 
 .project__wrap{
   width: 1000px;
-  height: 800px;
+  min-height: 1200px;
   margin: 20px auto;
   padding-top: 10px;
 }

@@ -1,12 +1,18 @@
 import * as React from 'react';
+import { useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
+
+
+import Telegraph from './Telegraph'
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
+
 
   return (
     <div
@@ -18,7 +24,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+          <Typography component="div">{children}</Typography>
         </Box>
       )}
     </div>
@@ -39,7 +45,14 @@ function a11yProps(index) {
 }
 
 export default function BasicTabs() {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
+  const [data, setData] = useState(false)
+
+  const saveData = (data2) => {
+    setData(data2)
+    console.log('SAVE')
+    console.log(data2)
+  }
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -49,18 +62,17 @@ export default function BasicTabs() {
     <Box sx={{ width: '100%' }} className="tabs_container">
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Активности" {...a11yProps(0)} />
-          <Tab label="Гайды" {...a11yProps(1)} />Новости
+          <Tab label="Гайды" {...a11yProps(0)} />
+          <Tab label="Активности" {...a11yProps(1)} />Новости
           <Tab label="Новости" {...a11yProps(2)} />
           <Tab label="О проекте" {...a11yProps(3)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        Новости
+        <Telegraph data={data} onSaveData={saveData}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        div.project Lorem ipsum dolor sit amet consectetur<br/>        
-        div.project Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus voluptatem atque dolor veniam magni ut nostrum soluta iste doloribus sint. Sed, consequatur quasi cupiditate porro ratione earum corrupti, fugiat excepturi debitis asperiores veritatis, minus ut sapiente corporis! Exercitationem numquam facere, aspernatur maxime voluptate saepe ipsa suscipit aperiam corrupti ratione? Dolorem?
+        
       </TabPanel>
       <TabPanel value={value} index={2}>
         Гайды

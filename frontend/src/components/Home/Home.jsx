@@ -1,6 +1,4 @@
-import React from "react";
-
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
 import { changeListBreadCrumbs } from "../../store/actions/breadCrumbs";
@@ -83,10 +81,6 @@ function Home({ changeListBreadCrumbs, user }) {
 				margin: '0 auto',
 			}}
 		>
-
-
-
-
 			<Paper elevation={8} className="home__slider__wrap">
 				<Divider />
 				<div className="slider_name_wrap">

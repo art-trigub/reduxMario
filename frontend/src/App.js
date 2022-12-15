@@ -20,7 +20,7 @@ function App() {
 
   return (
     <div className="App" id='app_id'>
-55555
+
       <Header />
       <div className='content_container'>
           <Routes />
