@@ -29,8 +29,6 @@ function Routes() {
 			<Route path="/login">
 				<SignIn></SignIn>
 			</Route>
-
-			{/* home */}
 			<Route exact path="/">
 				<Home />
 			</Route>

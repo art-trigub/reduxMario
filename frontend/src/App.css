@@ -17,19 +17,49 @@ html {
   }
 }
 
-
 .telegraph__container {
   width: 100%;
   margin: 0 auto;
   position: relative;
-  padding: 30px;
-  
+  padding-top: 0px;
+  height: auto;
+}
+
+.container{
+  max-width: 1000px;
+  width: 100%;
+  margin: 0px auto;
+  text-align: left;
+  font-size: 18px;
+  font-family: CustomSansSerif,'Lucida Grande',Arial,sans-serif;  
+}
+
+#editorjs{
+  padding-top: 0px;
+  height: auto !important;
+}
+
+.codex-editor__redactor{
+  margin-left: 0px;
+  margin-right: 0px;
+  border-radius: 10px;
+  padding-top: 20px;
+  padding-bottom: 0px!important;
+}
+
+.ce-block__content{
+
+}
+
+.ce-toolbar__actions {
+  padding-right: 30px;
 }
 
 .telegraph__buttons_wrap{
+  z-index: 1;
   position: absolute;
-  right: 0px;
-  top: 0px;
+  right: 25px;
+  top: 25px;
   width: 100px;
 }
 
@@ -39,7 +69,7 @@ html {
   width: 100%;
   text-align: left;
   outline: none;
-  height: 500px;
+  /* height: 500px; */
 }
 
 /* .codex-editor--empty{
@@ -49,12 +79,10 @@ html {
 #editorjs{
     height: 200px;
     cursor: pointer;
+    color:#282c34;
 }
 
-.content_container{
-  max-width: 1000px;
-  margin: 20px auto;
-}
+
 
 .App-header {
   background-color: #282c34;
@@ -92,6 +120,11 @@ html {
   color: white;
   font-weight: 400;
   font-size: 14px;
+}
+
+.content_container{
+  max-width: 1000px;
+  margin: 20px auto;
 }
 
 .home__slider__more{
@@ -247,9 +280,16 @@ html {
 
 .project__wrap{
   width: 1000px;
-  min-height: 1200px;
+  /* min-height: 1200px; */
   margin: 20px auto;
   padding-top: 10px;
+  height: auto;
+}
+
+.tab__content_container{
+  min-height: 500px;
+  background-color: #F3F3F3;
+
 }
 
 .footer__box{
@@ -277,7 +317,6 @@ html {
 @media screen and (max-width: 1300px) {
   .project__wrap{
     width: 1000px;
-    height: 800px;
     margin: 20px auto;
     padding-top: 10px;
   }

@@ -23,9 +23,10 @@ export default function SaveButton({
 			className={className}
 			style={style}
 			sx={{minWidth: '70px;'}}
-			variant="outlined"
+			variant="contained"
 			color="primary"
 			disabled={disabled}
+			size="small"
 		>
 			{text ? text :"save"}
 		</Button>

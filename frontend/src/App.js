@@ -9,18 +9,8 @@ import "slick-carousel/slick/slick-theme.css";
 import Routes from "./Routes/Routes";
 
 function App() {
-  const [widthScreen, setWidthScreen] = React.useState()
-
-
-  useEffect(() => {
-    setWidthScreen(document.outerWidth)
-}, []);
-
-
-
   return (
     <div className="App" id='app_id'>
-
       <Header />
       <div className='content_container'>
           <Routes />

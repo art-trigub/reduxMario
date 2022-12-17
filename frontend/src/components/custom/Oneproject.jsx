@@ -25,7 +25,6 @@ export default function Oneproject() {
                     </div>
                 </div>
                 <Tabs />       
-                
             </Paper>
         </>
     )

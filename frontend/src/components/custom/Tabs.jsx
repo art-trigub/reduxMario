@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { useEffect, useState } from "react";
+import Editor from '../Editor/Editor'
+
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -17,13 +19,14 @@ function TabPanel(props) {
   return (
     <div
       role="tabpanel"
+      className='tab__content_container'
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
+        <Box>
           <Typography component="div">{children}</Typography>
         </Box>
       )}
@@ -69,7 +72,8 @@ export default function BasicTabs() {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <Telegraph data={data} onSaveData={saveData}/>
+        {/* <Telegraph data={data} onSaveData={saveData}/> */}
+        <Editor data={data} onSaveData={saveData}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
         

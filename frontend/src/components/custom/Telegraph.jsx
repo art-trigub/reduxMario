@@ -10,7 +10,7 @@ import EditorJS from '@editorjs/editorjs';
 export default function Telegraph({onSaveData, data}) {
     const [isEdit, setIsEdit] = useState(true)
     const [domArticles, setDomArticles] = useState(false)
-    // console.log(domArticles)
+    console.log(domArticles)
 
     const editor = new EditorJS({ 
         placeholder: 'Телеграфное вступление',

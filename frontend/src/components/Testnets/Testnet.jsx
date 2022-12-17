@@ -29,10 +29,8 @@ import {Switch, Route, Link, useRouteMatch } from 'react-router-dom'
 
 export default function Testnet() {
     const { path } = useRouteMatch()
-    console.log(path)
     return (
         <>
-        
             <div className="list_container">
                 <Paper elevation={4} className="list_item">
                      <Link to="/project/"><div className="project_image" style={{backgroundImage: `url("${image1}")`}}></div></Link>
