@@ -24,7 +24,7 @@ export default function SaveButton({
 			style={style}
 			sx={{minWidth: '70px;'}}
 			variant="contained"
-			color="secondary"
+			color="primary"
 			disabled={disabled}
 			size=""
 		>

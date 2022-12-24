@@ -33,6 +33,8 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import Container from '@mui/material/Container';
 
+import DarkMode from './custom/DarkMode'
+
 
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Slide from '@mui/material/Slide';
@@ -115,6 +117,7 @@ export default function PersistentDrawerLeft() {
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
   const renderMobileMenu = (
+    <>
     <Menu
       anchorEl={mobileMoreAnchorEl}
       anchorOrigin={{
@@ -163,6 +166,7 @@ export default function PersistentDrawerLeft() {
         <p>Profile</p>
       </MenuItem>
     </Menu>
+    </>
   );
 
   return (
@@ -177,7 +181,7 @@ export default function PersistentDrawerLeft() {
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
-            sx={{ mr: 2, ...(open && { display: 'none' }) }}
+            sx={{...(open && { display: 'none' }) }}
           >
             <MenuIcon />
           </IconButton>
@@ -230,8 +234,11 @@ export default function PersistentDrawerLeft() {
             <div>О нас</div>
             <div>Контакты</div> */}
           </div>
-          <Box sx={{ flexGrow: 1 }} />
+          <div className="mode__container">
+           </div>
+        
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+            
             <IconButton
               size="large"
               aria-label="show 17 new notifications"
@@ -266,7 +273,10 @@ export default function PersistentDrawerLeft() {
             </IconButton>
           </Box>
         </Toolbar>
+        
       </AppBar>
+      
+      
       </HideOnScroll>
 
       {renderMobileMenu}
@@ -288,6 +298,7 @@ export default function PersistentDrawerLeft() {
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
+          
         </DrawerHeader>
         <Divider />
         <List>
@@ -303,6 +314,7 @@ export default function PersistentDrawerLeft() {
           ))}
         </List>
         <Divider />
+        
         <List>
           {['All mail', 'Trash', 'Spam'].map((text, index) => (
             <ListItem key={text} disablePadding>
@@ -316,7 +328,6 @@ export default function PersistentDrawerLeft() {
           ))}
         </List>
       </Drawer>
-      <DrawerHeader />
     </Box>
   );
 }
@@ -330,7 +341,7 @@ const Search = styled('div')(({ theme }) => ({
   marginRight: theme.spacing(2),
   marginLeft: 0,
   width: '100%',
-  [theme.breakpoints.up('sm')]: {
+  [theme.breakpoints.up('md')]: {
     marginLeft: theme.spacing(3),
     width: 'auto',
   },
@@ -404,5 +415,5 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
   justifyContent: 'flex-start',
-  backgroundColor: theme.palette.primary
+  backgroundColor: theme.palette.primary.main
 }));

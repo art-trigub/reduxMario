@@ -38,7 +38,6 @@ export default function Testnet() {
                      <Link to="/project/"><div className="project_image" style={{backgroundImage: `url("${image1}")`}}></div></Link>
                     <div className="title_project">Metaverse Magna</div>
                     <div className="rating_container"><Rating /></div>
-                    <Editor />
                 </Paper>
                 <Paper elevation={4} className="list_item">
                      <Link to="/project/"><div className="project_image" style={{backgroundImage: `url("${image2}")`}}></div></Link>

@@ -6,15 +6,33 @@ html {
   /* background-color: #905385; */
   background-color: #202124;
   color: white!important;
+  position: relative;
 
+}
+
+.MuiDrawer-root:nth-child(2){
+  z-index: 5!important;
+}
+
+.mode__wrap{
+  min-width: 100px;
+  position: absolute;
+  top: -10px;
+  right: -200px;
+}
+
+.mode__container{
+  display: flex;
+  width: 0px;
 }
 
 ::selection {
-  background-color: #ff3d00;
+  /* background-color: #ff3d00; */
+  background-color: #905385;
 }
 
 .css-k008qs{
-  background-color: #fff;
+  /* background-color: #fff; */
 }
 
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Michroma&family=Quicksand:wght@400;500&family=Source+Sans+Pro&display=swap');
@@ -169,7 +187,7 @@ html {
 
 .content_container{
   max-width: 1200px;
-  margin: 20px auto;
+  margin: 65px auto;
   position: relative;
 }
 
@@ -303,7 +321,7 @@ html {
 }
 
 .header__list{
-  width: 980px;
+  width: 380px;
   min-width: 380px;
 }
 
@@ -348,11 +366,23 @@ html {
 }
 
 .css-qh7kl5-MuiPaper-root{
-  background-color: #424242!important;
+  background-color: #5E5E5E!important;
   color: white!important;
 }
 .css-16geab7-MuiButtonBase-root-MuiTab-root{
   color: white!important;
+}
+
+.css-1dz4aem{
+  top: -20px!important;
+  z-index: 1111!important;
+  right: 20px!important;
+}
+
+.css-eim7ej{
+  top: -20px!important;
+  z-index: 1111!important;
+  right: 20px!important;
 }
 
 
@@ -397,8 +427,8 @@ html {
     padding-top: 10px;
   }
 
-  .content_container{
-    max-width: 1200px;
+  .MuiInputBase-input{
+    width: 150px!important;
   }
 
   .header__list{
@@ -421,6 +451,10 @@ html {
     width: 800px;
   }
 
+  .project__title {
+    width: 100px!important;
+  }
+
   .content_container{
     max-width: 1000px;
   }
@@ -430,6 +464,8 @@ html {
   .home__slider__container{
     width:700px;
   }
+
+
 
   .project__title{
     display: none!important;
