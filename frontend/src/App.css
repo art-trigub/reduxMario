@@ -2,6 +2,22 @@ html {
   margin: 0px;
 }
 
+#app_id{
+  /* background-color: #905385; */
+  background-color: #202124;
+  color: white!important;
+
+}
+
+::selection {
+  background-color: #ff3d00;
+}
+
+.css-k008qs{
+  background-color: #fff;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Michroma&family=Quicksand:wght@400;500&family=Source+Sans+Pro&display=swap');
 .App {
   text-align: center;
   text-decoration: none;
@@ -39,12 +55,21 @@ html {
   height: auto !important;
 }
 
+.css-k008qs{
+  max-height: 48px;
+}
+
 .codex-editor__redactor{
+  font-weight: 500;
+  font-size: 19px;
+  /* font-family: 'Michroma', sans-serif; */
+  /* font-family: 'Quicksand', sans-serif; */
+  font-family: 'Source Sans Pro', sans-serif;
   margin-left: 0px;
   margin-right: 0px;
   border-radius: 10px;
   padding-top: 30px;
-  padding-bottom: 0px!important;
+  padding-bottom: 200px!important;
 }
 
 .codex-editor{
@@ -56,11 +81,23 @@ html {
 }
 
 .ce-block__content{
+  margin-left: 100px;
+}
 
+.cdx-block{
+  color: white;
+}
+
+.ce-popover{
+  color: black;
+}
+
+.ce-inline-toolbar{
+  color: black;
 }
 
 .ce-toolbar__actions {
-  padding-right: 30px;
+  padding-right: 100px;
 }
 
 .telegraph__buttons_wrap{
@@ -131,8 +168,9 @@ html {
 }
 
 .content_container{
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 20px auto;
+  position: relative;
 }
 
 .home__slider__more{
@@ -151,22 +189,30 @@ html {
 
 }
 
+.project_specifications__container{
+  position: absolute;
+  right: 20px;
+  top: 0px;
+}
+
 .project__title a{
   text-decoration: none;
   color: white; 
 }
 
 .project_container{
+
   display: flex;
-  margin-top: 20px;
+  margin: 20px;
 }
 
 .project_description{
-  width: 50%;
+  font-family: 'Source Sans Pro', sans-serif;  width: 50%;
   margin: 20px;
 }
 
 .project_title{
+  font-family: 'Source Sans Pro', sans-serif;
   width: 100%;
   text-align: center;
   font-size: 16px;
@@ -287,7 +333,7 @@ html {
 }
 
 .project__wrap{
-  width: 1000px;
+  width: 1200px;
   /* min-height: 1200px; */
   margin: 20px auto;
   padding-top: 10px;
@@ -295,9 +341,23 @@ html {
 }
 
 .tab__content_container{
-  min-height: 500px;
-  background-color: #F3F3F3;
+  min-height: 600px;
+  background-color: #3F3939;
+  color: white!important;
 
+}
+
+.css-qh7kl5-MuiPaper-root{
+  background-color: #424242!important;
+  color: white!important;
+}
+.css-16geab7-MuiButtonBase-root-MuiTab-root{
+  color: white!important;
+}
+
+
+#editorjs{
+  color: white!important;
 }
 
 /* .codex-editor--empty {
@@ -309,9 +369,9 @@ html {
 } */
 
 .footer__box{
-  background-color: #F2F2F2;
+  background-color: #252525;
   width: 100%;
-  height: 180px;
+  height: 80px;
   margin-top: 50px;
   margin-bottom: 0px!important;
 }
@@ -332,13 +392,13 @@ html {
 
 @media screen and (max-width: 1300px) {
   .project__wrap{
-    width: 1000px;
+    width: 1100px;
     margin: 20px auto;
     padding-top: 10px;
   }
 
   .content_container{
-    max-width: 1000px;
+    max-width: 1200px;
   }
 
   .header__list{

@@ -4,7 +4,7 @@ import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
 
 export default function BasicRating() {
-  const [value, setValue] = React.useState(2);
+  const [value, setValue] = React.useState(4.5);
 
   return (
     <Box

@@ -49,6 +49,10 @@ function a11yProps(index) {
 export default function BasicTabs() {
   const [value, setValue] = useState(0);
   const [data, setData] = useState(false)
+  const [dataActivity, setDataActivity] = useState(false)
+  const [dataNews, setDataNews] = useState(false)
+  const [dataProject, setDataProject] = useState(false)
+
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -67,16 +71,17 @@ export default function BasicTabs() {
       <TabPanel value={value} index={0}>
         {/* <Telegraph data={data} onSaveData={saveData}/> */}
         <div id="editorsave"></div>
-        <Editor data={data} setData={setData}/>
+        <Editor data={data} setData={setData} placehold={'Let`s write good Guide!'}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        
+        <Editor data={dataActivity} setData={setDataActivity} placehold={'Describe your expirience in this Amba.'}/>
+
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Гайды
+      <Editor data={dataNews} setData={setDataNews} placehold={"Can you share, what's happened?"}/>
       </TabPanel>
       <TabPanel value={value} index={3}>
-        Активности
+      <Editor data={dataProject} setData={setDataProject} placehold={'Interesting for reading...'}/>
       </TabPanel>
     </Box>
   );

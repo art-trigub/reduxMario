@@ -24,7 +24,7 @@ export default function EditButton({
 			style={style}
             sx={{minWidth: '70px;'}}
 			variant="outlined"
-			color="primary"
+			color="secondary"
 			disabled={disabled}
 			size=""
 		>

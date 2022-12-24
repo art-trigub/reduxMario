@@ -1,5 +1,6 @@
 .simple-image {
     padding: 20px 0;
+    max-width: 100%;;
 }
 
 .simple-image input {
