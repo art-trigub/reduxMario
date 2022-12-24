@@ -15,7 +15,6 @@ import Telegraph from './Telegraph'
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
-
   return (
     <div
       role="tabpanel"
@@ -73,6 +72,7 @@ export default function BasicTabs() {
       </Box>
       <TabPanel value={value} index={0}>
         {/* <Telegraph data={data} onSaveData={saveData}/> */}
+        
         <Editor data={data} onSaveData={saveData}/>
       </TabPanel>
       <TabPanel value={value} index={1}>

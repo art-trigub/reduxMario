@@ -60,6 +60,11 @@ class SimpleImage {
       image.src = url;
       caption.placeholder = 'Caption...';
       caption.value = captionText || '';
+      caption.style.border = 'none'
+      caption.style.backgroundColor = '#F3F3F3'
+      caption.style.width = '100%'
+      caption.style.textAlign = 'center'
+
   
       this.wrapper.innerHTML = '';
       this.wrapper.appendChild(image);

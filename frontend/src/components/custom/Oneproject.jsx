@@ -8,6 +8,7 @@ import Tabs from './Tabs'
 
 
 export default function Oneproject() {
+
     return (
         <>
             <Paper elevation={5} className="project__wrap">

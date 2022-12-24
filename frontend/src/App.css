@@ -43,8 +43,16 @@ html {
   margin-left: 0px;
   margin-right: 0px;
   border-radius: 10px;
-  padding-top: 20px;
+  padding-top: 30px;
   padding-bottom: 0px!important;
+}
+
+.codex-editor{
+  display: none;
+}
+
+.codex-editor:nth-child(2){
+  display: block;
 }
 
 .ce-block__content{
@@ -291,6 +299,14 @@ html {
   background-color: #F3F3F3;
 
 }
+
+/* .codex-editor--empty {
+  display: none;
+} */
+/* 
+#editorMain{
+  display:block;
+} */
 
 .footer__box{
   background-color: #F2F2F2;

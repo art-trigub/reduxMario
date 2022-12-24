@@ -23,10 +23,10 @@ export default function EditButton({
 			className={className}
 			style={style}
             sx={{minWidth: '70px;'}}
-			variant="contained"
+			variant="outlined"
 			color="primary"
 			disabled={disabled}
-			size="small"
+			size=""
 		>
 			{text ? text :"edit"}
 		</Button>

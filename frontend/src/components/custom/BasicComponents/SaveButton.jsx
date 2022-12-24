@@ -26,7 +26,7 @@ export default function SaveButton({
 			variant="contained"
 			color="primary"
 			disabled={disabled}
-			size="small"
+			size=""
 		>
 			{text ? text :"save"}
 		</Button>
