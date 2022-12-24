@@ -15,8 +15,6 @@ import EditButton from '../custom/BasicComponents/EditButton';
 
 const Editor = ({data, setData}) => {
     const [isEdit, setIsEdit] = useState(true)
-    const output = document.getElementById("editorsave");
-    console.log(output)
     const editor = new EditorJS({
         holder: 'editorjs', 
         tools: { 
@@ -24,10 +22,10 @@ const Editor = ({data, setData}) => {
                 class: SimpleImage,
                 inlineToolbar: true            
             },
-            header: Header, 
-            list: List,
+            
           },
           data: data,
+          logLevel: 'VERBOSE',
           autofocus: false,
         placeholder: 'True guide...'
     })
@@ -47,7 +45,7 @@ const Editor = ({data, setData}) => {
         editor.save().then((outputData) => {
             console.log('Article data: ', outputData)
             setData(outputData)
-            output.innerHTML = JSON.stringify(outputData, null, 4);
+            // output.innerHTML = JSON.stringify(outputData, null, 4);
           }).catch((error) => {
             console.log('Saving failed: ', error)
           });

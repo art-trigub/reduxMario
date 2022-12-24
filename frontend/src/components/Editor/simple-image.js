@@ -11,7 +11,7 @@ class SimpleImage {
         tags: ['IMG'],
         files: {
           mimeTypes: ['image/*'],
-          extensions: ['gif', 'jpg', 'png'] // You can specify extensions instead of mime-types
+          extensions: ['gif', 'jpg', 'jpeg', 'png'] // You can specify extensions instead of mime-types
         },
         patterns: {
           image: /https?:\/\/\S+\.(gif|jpe?g|tiff|png)$/i
@@ -58,13 +58,21 @@ class SimpleImage {
       const file =  document.createElement("input");
       file.type = "file"
       input.placeholder = "Paste an image URL...";
-      file.placeholder = "File select";
       input.addEventListener("paste", (event) => {
         this._createImage(event.clipboardData.getData("text"));
       });
 
-      file.addEventListener("change", (event) => {
-        this._createImage(event.clipboardData.getData("text"));
+      file.addEventListener("change", (loadEvent) => {
+        console.log(loadEvent.target.files[0])
+        const file = loadEvent.target.files[0]
+        this._createImage(loadEvent.target.files[0]);
+        const reader = new FileReader();
+  
+          reader.onload = (loadEvent) => {
+            this._createImage(loadEvent.target.result);
+          };
+  
+          reader.readAsDataURL(file);
       });
   
       this.wrapper.appendChild(input);
