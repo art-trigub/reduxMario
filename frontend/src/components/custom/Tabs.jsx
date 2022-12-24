@@ -50,12 +50,6 @@ export default function BasicTabs() {
   const [value, setValue] = useState(0);
   const [data, setData] = useState(false)
 
-  const saveData = (data2) => {
-    setData(data2)
-    console.log('SAVE')
-    console.log(data2)
-  }
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -72,8 +66,8 @@ export default function BasicTabs() {
       </Box>
       <TabPanel value={value} index={0}>
         {/* <Telegraph data={data} onSaveData={saveData}/> */}
-        
-        <Editor data={data} onSaveData={saveData}/>
+        <div id="editorsave"></div>
+        <Editor data={data} setData={setData}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
         

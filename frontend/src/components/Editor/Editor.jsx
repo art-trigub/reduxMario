@@ -13,54 +13,31 @@ import EditButton from '../custom/BasicComponents/EditButton';
 // import Configuration from './Configuration'
 
 
-const Editor = (props) => {
+const Editor = ({data, setData}) => {
     const [isEdit, setIsEdit] = useState(true)
-
-    const [editor, setEditor] = useState(new EditorJS({
+    const output = document.getElementById("editorsave");
+    console.log(output)
+    const editor = new EditorJS({
         holder: 'editorjs', 
         tools: { 
-            image: SimpleImage,
+            image: {
+                class: SimpleImage,
+                inlineToolbar: true            
+            },
             header: Header, 
-            list: List 
-          }, 
-    }))
-
-    console.log('aaaaaaa')
-
+            list: List,
+          },
+          data: data,
+          autofocus: false,
+        placeholder: 'True guide...'
+    })
 
 
 	useEffect(() => {
-            // document.getElementById("editor").innerHTML = ''
-            document.getElementById('editorjs').innerHTML = ''
-            console.log(document.getElementById("editorjs"))
-            let nodeEditor = document.getElementById("editorjs")
-            if(nodeEditor.children.length > 1) nodeEditor.children[1].id = 'editorMain'
-            console.log(document.getElementById("editorjs").children.length)
-            // document.getElementById("editorjs").children[1].id = 'blablabla'
-            // console.log(nodeEditor)
-            // while(nodeEditor.children.length > 1) {
-            //     console.log('1')
-            //     nodeEditor.removeChild(nodeEditor.lastChild)
-            // }
-            // console.log(nodeEditor)
-	}, []);
+
+    }, []);
 
 
-
-
-
-    // editor.isReady
-    //     .then(() => {
-    //         console.log('READY EDITOR')
-    //         return({
-                
-
-    //         })
-    //     })
-    //     .catch(() => {
-
-    //     });
-        
     const onEdit = () => {
         setIsEdit(true)
     }    
@@ -69,11 +46,12 @@ const Editor = (props) => {
         setIsEdit(false)
         editor.save().then((outputData) => {
             console.log('Article data: ', outputData)
+            setData(outputData)
+            output.innerHTML = JSON.stringify(outputData, null, 4);
           }).catch((error) => {
             console.log('Saving failed: ', error)
           });
     }
-
 
 
     return (

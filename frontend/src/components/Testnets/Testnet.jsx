@@ -22,6 +22,8 @@ import image19 from '../../images/ObolLabs.jpg'
 import image20 from '../../images/Vega.jpg'
 import image21 from '../../images/Aleo.png'
 import Rating from '../custom/Rating'
+import Editor from '../Editor/Editor'
+
 import {Switch, Route, Link, useRouteMatch } from 'react-router-dom'
 
 
@@ -36,6 +38,7 @@ export default function Testnet() {
                      <Link to="/project/"><div className="project_image" style={{backgroundImage: `url("${image1}")`}}></div></Link>
                     <div className="title_project">Metaverse Magna</div>
                     <div className="rating_container"><Rating /></div>
+                    <Editor />
                 </Paper>
                 <Paper elevation={4} className="list_item">
                      <Link to="/project/"><div className="project_image" style={{backgroundImage: `url("${image2}")`}}></div></Link>

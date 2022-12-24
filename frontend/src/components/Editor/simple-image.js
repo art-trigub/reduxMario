@@ -5,6 +5,19 @@ class SimpleImage {
         icon: '<svg width="17" height="15" viewBox="0 0 336 276" xmlns="http://www.w3.org/2000/svg"><path d="M291 150V79c0-19-15-34-34-34H79c-19 0-34 15-34 34v42l67-44 81 72 56-29 42 30zm0 52l-43-30-56 30-81-67-66 39v23c0 19 15 34 34 34h178c17 0 31-13 34-29zM79 0h178c44 0 79 35 79 79v118c0 44-35 79-79 79H79c-44 0-79-35-79-79V79C0 35 35 0 79 0z"/></svg>',
       };
     }
+
+    static get pasteConfig() {
+      return {
+        tags: ['IMG'],
+        files: {
+          mimeTypes: ['image/*'],
+          extensions: ['gif', 'jpg', 'png'] // You can specify extensions instead of mime-types
+        },
+        patterns: {
+          image: /https?:\/\/\S+\.(gif|jpe?g|tiff|png)$/i
+        }
+      }
+    }
   
     constructor({data, api}){
       this.api = api;
@@ -42,13 +55,21 @@ class SimpleImage {
       }
   
       const input = document.createElement("input");
-  
+      const file =  document.createElement("input");
+      file.type = "file"
       input.placeholder = "Paste an image URL...";
+      file.placeholder = "File select";
       input.addEventListener("paste", (event) => {
+        this._createImage(event.clipboardData.getData("text"));
+      });
+
+      file.addEventListener("change", (event) => {
         this._createImage(event.clipboardData.getData("text"));
       });
   
       this.wrapper.appendChild(input);
+      this.wrapper.appendChild(file);
+
   
       return this.wrapper;
     }
@@ -75,7 +96,7 @@ class SimpleImage {
   
     save(blockContent){
       const image = blockContent.querySelector('img');
-      const caption = blockContent.querySelector('[contenteditable]');
+      const caption = blockContent.querySelector('input');
     
       return Object.assign(this.data, {
           url: image.src,
@@ -91,6 +112,8 @@ class SimpleImage {
   
       return true;
     }
+
+    
   
     renderSettings(){
       const wrapper = document.createElement('div');
@@ -135,7 +158,35 @@ class SimpleImage {
           this.api.blocks.stretchBlock(this.api.blocks.getCurrentBlockIndex(), !!this.data.stretched);
         }
       });
+    }
+
+    onPaste(event){
+      switch (event.type){
+        case 'tag':
+          const imgTag = event.detail.data;
+  
+          this._createImage(imgTag.src);
+          break;
+
+        case 'file':
+          const file = event.detail.file;
+          const reader = new FileReader();
+  
+          reader.onload = (loadEvent) => {
+            this._createImage(loadEvent.target.result);
+          };
+  
+          reader.readAsDataURL(file);
+          break;
+
+        case 'pattern':
+          const src = event.detail.data;
+
+          this._createImage(src);
+          break;
       }
+    }
+
   }
   
   export default SimpleImage;
