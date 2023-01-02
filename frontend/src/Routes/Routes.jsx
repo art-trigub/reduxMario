@@ -9,7 +9,7 @@ import SignIn from "../components/Autorization/SignIn";
 
 
 
-function Routes() {
+function Routes({mode}) {
 	return (
 		<Switch>
 			{/* clients */}
@@ -19,18 +19,18 @@ function Routes() {
 			</Route>
 
 			<Route path="/testnet">
-				<Testnet></Testnet>
+				<Testnet mode={mode}></Testnet>
 			</Route>
 
 			<Route path="/project">
-				<Oneproject></Oneproject>
+				<Oneproject mode={mode}></Oneproject>
 			</Route>
 
 			<Route path="/login">
 				<SignIn></SignIn>
 			</Route>
 			<Route exact path="/">
-				<Home />
+				<Home mode={mode}/>
 			</Route>
 		</Switch>
 	);

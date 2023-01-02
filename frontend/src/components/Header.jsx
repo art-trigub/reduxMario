@@ -2,8 +2,6 @@ import * as React from 'react';
 import {Switch, Route, Link } from 'react-router-dom'
 
 import BasicBreadcrumbs from "./custom/Breadcrumbs";
-
-
 import { styled, alpha, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -61,7 +59,6 @@ function HideOnScroll(props) {
 export default function PersistentDrawerLeft() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -192,7 +189,7 @@ export default function PersistentDrawerLeft() {
             sx={{ display: 'block', width: '500px'}}
             className='project__title'
           >
-                        <Link to="/">MAR!O</Link>
+          <Link to="/">MAR!O</Link>
           </Typography>
           <Search className='header_search'>
             <SearchIconWrapper>
@@ -203,6 +200,7 @@ export default function PersistentDrawerLeft() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
+
           <div className='header__list' style={{display: 'flex', justifyContent: 'flex-start'}}>
              <Link to="/"><div>Домой</div></Link>
             <Link
@@ -238,7 +236,6 @@ export default function PersistentDrawerLeft() {
            </div>
         
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            
             <IconButton
               size="large"
               aria-label="show 17 new notifications"
@@ -273,23 +270,12 @@ export default function PersistentDrawerLeft() {
             </IconButton>
           </Box>
         </Toolbar>
-        
       </AppBar>
-      
-      
       </HideOnScroll>
-
       {renderMobileMenu}
       {renderMenu}
       <Drawer
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          '& .MuiDrawer-paper': {
-            width: drawerWidth,
-            boxSizing: 'border-box',
-          },
-        }}
+        sx={{width: drawerWidth, flexShrink: 0,'& .MuiDrawer-paper': {width: drawerWidth, boxSizing: 'border-box',},}}
         variant="persistent"
         anchor="left"
         open={open}
@@ -415,5 +401,5 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
   justifyContent: 'flex-start',
-  backgroundColor: theme.palette.primary.main
+  backgroundсolor: theme.palette.primary[theme.palette.mode]
 }));

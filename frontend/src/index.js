@@ -13,11 +13,10 @@ import { useTheme, createTheme, ThemeProvider } from '@mui/material/styles';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { ClassNames } from '@emotion/react';
+import CssBaseline from '@mui/material/CssBaseline';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
-
-
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
 function MyApp() {
@@ -26,9 +25,10 @@ function MyApp() {
   return (
     <Box
       sx={{
-        position: "absolute",
-        right: "100px",
-        top: "100px",
+        position: "fixed",
+        right: "0px",
+        top: "-20px",
+        zIndex: "1112",
         display: 'flex',
         width: '5%',
         alignItems: 'center',
@@ -57,21 +57,30 @@ export default function ToggleColorMode() {
     [],
   );
 
+
+  // primary: {
+  //   light: '#ff9e80',
+  //   main: '#212121',
+  //   dark: '#121858',
+  //   contrastText: '#fff',
+  // },
+
+
   const theme = React.useMemo(
     () =>
       createTheme({
         palette: {
           mode,
           primary: {
-            light: '#8F5386',
-            main: '#ef5350',
-            dark: '#424242',
+            light: '#fff',
+            main: '#1976d2',
+            dark: '#202124',
             contrastText: '#fff',
           },
           secondary: {
             light: '#4DB6AC',
             main: '#4DB6AC',
-            dark: '#ba000d',
+            dark: '#202124',
             contrastText: '#000',
           },
         },
@@ -82,29 +91,30 @@ export default function ToggleColorMode() {
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
-          <App />
+          <CssBaseline />
+          <App mode={mode}/>
           <MyApp />
       </ThemeProvider>
     </ColorModeContext.Provider>
   );
 }
 
-const theme = createTheme({
-    palette: {
-      primary: {
-        light: '#4DB6AC',
-        main: '#424242',
-        dark: '#424242',
-        contrastText: '#fff',
-      },
-      secondary: {
-        light: '#4DB6AC',
-        main: '#4DB6AC',
-        dark: '#ba000d',
-        contrastText: '#000',
-      },
-    },
-});
+// const theme = createTheme({
+//     palette: {
+//       primary: {
+//         light: '#4DB6AC',
+//         main: '#424242',
+//         dark: '#424242',
+//         contrastText: '#fff',
+//       },
+//       secondary: {
+//         light: '#4DB6AC',
+//         main: '#4DB6AC',
+//         dark: '#ba000d',
+//         contrastText: '#000',
+//       },
+//     },
+// });
 root.render(
   <React.StrictMode>
       <Provider store={store}>

@@ -285,6 +285,7 @@ class SimpleImage {
       caption.placeholder = 'Caption...';
       caption.value = captionText || '';
       caption.style.border = 'none'
+      caption.style.fontSize = '12px'
       caption.style.width = '100%'
       caption.style.textAlign = 'center'
 

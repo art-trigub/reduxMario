@@ -7,6 +7,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import { useTheme } from '@mui/material/styles';
 
 
 
@@ -14,6 +15,7 @@ import Telegraph from './Telegraph'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
+  const theme = useTheme();
 
   return (
     <div
@@ -22,6 +24,7 @@ function TabPanel(props) {
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
+      backgroundcolor={theme.palette.primary[theme.palette.mode]}
       {...other}
     >
       {value === index && (

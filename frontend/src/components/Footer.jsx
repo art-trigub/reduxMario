@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Switch, Route, Link } from 'react-router-dom'
+import { Switch, Route, Link } from 'react-router-dom'
 
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
@@ -24,9 +24,9 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 export default function Footer() {
 
   return (
-    <Box className='footer__box' sx={{ flexGrow: 1, marginBottom: 3 }}>
-      
+    <Box color="#202124" className='footer__box' sx={{backgroundColor: "#202124", flexGrow: 1, marginBottom: 3 }}>
+
     </Box>
   );
-  
+
 }
