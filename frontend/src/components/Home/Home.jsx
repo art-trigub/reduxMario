@@ -96,9 +96,10 @@ function Home({ changeListBreadCrumbs, user, dataProjects }) {
 					<Slider {...settings}>
 						<div className="home__slider_item__container">
 							<div className="home__slider_item__image" style={{backgroundImage: `url("${image23}")`}}></div>
-							<div className="home__slider_item__title">Polkadot</div>
+							<Link to="/project"><div className="home__slider_item__title">Polkadot</div></Link>
 						</div>
 						{dataProjects.map((item)=> {
+							console.log('item', item)
 							return (
 									<div className="home__slider_item__container">
 										<div className="home__slider_item__image" style={{backgroundImage: `url("${image9}")`}}></div>
@@ -106,10 +107,6 @@ function Home({ changeListBreadCrumbs, user, dataProjects }) {
 									</div>
 									)
 						})}
-						<div className="home__slider_item__container">
-							<div className="home__slider_item__image" style={{backgroundImage: `url("${image9}")`}}></div>
-							<div className="home__slider_item__title">title_project</div>
-						</div>
 						
 					</Slider>
 				</div>

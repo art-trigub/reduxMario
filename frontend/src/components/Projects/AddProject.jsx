@@ -1,7 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { Component, useState, useEffect, useRef  } from "react";
+import {Link, useRouteMatch} from "react-router-dom";
 import { connect } from 'react-redux';
-import { Link, useRouteMatch } from 'react-router-dom';
 import { Formik, Form } from 'formik';
+
+import { saveProject, delProject } from '../../store/actions/projects'
+
+
 
 import SaveButton from '../custom/BasicComponents/SaveButton';
 import CancelButton from '../custom/BasicComponents/CancelButton';
@@ -13,16 +17,16 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 
-function CreateProject() {
+function CreateProject({saveProject, projectsData}) {
 const [item, setItem] = useState({
-    title: '',
-    desc: '',
-    status: '',
-    image: ''
+    title_project: '',
+    description_project: '',
+    type_project: '',
+    avatar_project: ''
 })
 
 function onSave() {
-
+	saveProject(item)
 }
 
 function onCancel() {
@@ -57,8 +61,8 @@ function onSaveItem() {
 									className='fullWidth addProject_form_item'
 									onChange={({ target }) => onChange(target)}
 									label={"Название проекта"}
-									name='title'
-									value={item.title}
+									name='title_project'
+									value={item.title_project}
 								>
 								</TextField>
 
@@ -69,8 +73,8 @@ function onSaveItem() {
 									id='description_project_form'
 									onChange={({ target }) => onChange(target)}
 									label={"Описание"}
-									name='desc'
-									value={item.desc}
+									name='description_project'
+									value={item.description_project}
 									multiline
 								>
 								</TextField>
@@ -80,8 +84,8 @@ function onSaveItem() {
 									className="fullWidth addProject_form_item">
 									<InputLabel id="">{"Статус проекта"}</InputLabel>
 									<Select
-										name='status_project'
-										value={item.status_project}
+										name='type_project'
+										value={item.type_project}
 										onChange={({ target }) => onChange(target)}
 										className='fullWidth'
 									>
@@ -111,6 +115,18 @@ function onSaveItem() {
 	);
 }
 
+function mapStateToProps({projects}) {
+	return {
+		projectsData: projects.list,
+    //  isLoading: projects.isLoading
+	};
+}
 
-export default CreateProject
+const mapDispatchToProps = {
+    saveProject: saveProject,
+	delProject: delProject
+	// changeListBreadCrumbs: changeListBreadCrumbs,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateProject);
 

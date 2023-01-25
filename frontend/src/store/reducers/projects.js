@@ -17,7 +17,9 @@ function updateProject(list, data) {
 }
 
 function createProject(list, item) {
-	return [...list, item]
+	let newProject = item
+    newProject.id = Date.now()
+	return [...list, newProject]
 }
 
 export default function (state = initialState, { type, payload }) {
