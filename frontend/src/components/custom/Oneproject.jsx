@@ -1,5 +1,7 @@
 import * as React from 'react';
 import image1 from '../../images/MetaverseMagna.jpg'
+import image23 from '../../images/Polkadot.png'
+
 
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -13,13 +15,13 @@ export default function Oneproject() {
     return (
         <>
             <Paper elevation={5} className="project__wrap">
-            <div className="project_title">Metaverse Magna</div>
+            <div className="project_title">Polkadot</div>
 
                 <div className="project_container">
                     <div 
                         className="home__slider_item__image" 
                         style={{
-                            backgroundImage: `url("${image1}")`,
+                            backgroundImage: `url("${image23}")`,
                             margin: '5px'
                         }}>
                     </div>

@@ -21,6 +21,7 @@ import image18 from '../../images/LayerZero.jpg'
 import image19 from '../../images/ObolLabs.jpg'
 import image20 from '../../images/Vega.jpg'
 import image21 from '../../images/Aleo.png'
+import image23 from "../../images/Polkadot.png";
 import Rating from '../custom/Rating'
 import Editor from '../Editor/Editor'
 
@@ -34,6 +35,11 @@ export default function Testnet() {
     return (
         <>
             <div className="list_container">
+                <Paper elevation={4} className="list_item">
+                     <Link to="/project/"><div className="project_image" style={{backgroundImage: `url("${image23}")`}}></div></Link>
+                    <div className="title_project">Polkadot</div>
+                    <div className="rating_container"><Rating /></div>
+                </Paper>
                 <Paper elevation={4} className="list_item">
                      <Link to="/project/"><div className="project_image" style={{backgroundImage: `url("${image1}")`}}></div></Link>
                     <div className="title_project">Metaverse Magna</div>
