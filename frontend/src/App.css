@@ -225,7 +225,37 @@ html {
 .content_container{
   max-width: 1200px;
   margin: 65px auto;
-  position: relative;
+}
+
+.add_new_project__container{
+  position: absolute;
+  top: 60x;
+  right: 40px;
+}
+
+#description_project_form{
+  height: 200px!important;
+}
+
+.addProject_form_container{
+  display: flex;
+  flex-direction: column;
+}
+
+.addProject_form_item{
+  margin-top: 20px!important;
+}
+
+.addProject_button_container{
+  width: 200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+}
+
+.addProject_button_container div{
+  margin-right: 20px;
+  margin-top: 20px;
 }
 
 .home__slider__more{
@@ -394,7 +424,7 @@ html {
 }
 
 .project__wrap{
-  width: 1200px;
+  width: 1100px;
   /* min-height: 1200px; */
   margin: 20px auto;
   padding-top: 10px;

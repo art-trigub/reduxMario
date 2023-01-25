@@ -5,6 +5,8 @@ import Testnet from "../components/Testnets/Testnet";
 import Oneproject from "../components/custom/Oneproject";
 import Projects from "../components/Projects/Projects";
 import SignIn from "../components/Autorization/SignIn";
+import AddProject from '../components/Projects/AddProject'
+
 
 
 
@@ -12,7 +14,9 @@ import SignIn from "../components/Autorization/SignIn";
 function Routes({mode}) {
 	return (
 		<Switch>
-			{/* clients */}
+			<Route path="/addproject">
+				<AddProject></AddProject>
+			</Route>
 
 			<Route path="/projects">
 				<Projects></Projects>

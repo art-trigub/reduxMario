@@ -7,6 +7,7 @@ import Paper from "@mui/material/Paper";
 import Divider from "@mui/material/Divider";
 import {Link} from "react-router-dom";
 import Slider from "react-slick";
+
 import image8 from "../../images/MagicSquare.png";
 import image9 from "../../images/XDAO.jpg";
 import image10 from "../../images/BitsCrypto.jpg";
@@ -59,8 +60,6 @@ function Home({ changeListBreadCrumbs, user }) {
 	}, [sizeScreen]);
 
 	function changeSlides() {
-		console.log("CHANGE")
-		console.log(sizeScreen)
 		if(sizeScreen * 100 >= 1350) return setSlidesToShow(5);
 		if(sizeScreen * 100 < 640) return setSlidesToShow(1) ;
 		if(sizeScreen * 100 < 768) return setSlidesToShow(2) ;
@@ -69,6 +68,7 @@ function Home({ changeListBreadCrumbs, user }) {
 		if(sizeScreen * 100 < 1300) return setSlidesToShow(5);
 
 	}
+
 
 	return (
 		<Box
@@ -199,6 +199,7 @@ function Home({ changeListBreadCrumbs, user }) {
 					</Slider>
 				</div>
 			</Paper>
+
 		</Box>
 	);
 }

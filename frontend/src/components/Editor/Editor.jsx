@@ -29,20 +29,24 @@ const Editor = ({data, setData, placehold}) => {
             //     class: MyBlockTool,
             //     tunes: ['myTune']
             // },
-            header: {
-                class: Header,
-                /**
-                 * This property will override the common settings
-                 * That means that this tool will have only Marker and Link inline tools
-                 * If 'true', the common settings will be used.
-                 * If 'false' or omitted, the Inline Toolbar wont be shown
-                 */
-                inlineToolbar: ['marker', 'link'],
-                config: {
-                  placeholder: 'Header'
-                },
-                shortcut: 'CMD+SHIFT+H'
-              },
+
+
+            // header: {
+            //     class: Header,
+            //     /**
+            //      * This property will override the common settings
+            //      * That means that this tool will have only Marker and Link inline tools
+            //      * If 'true', the common settings will be used.
+            //      * If 'false' or omitted, the Inline Toolbar wont be shown
+            //      */
+            //     inlineToolbar: ['marker', 'link'],
+            //     config: {
+            //       placeholder: 'Header'
+            //     },
+            //     shortcut: 'CMD+SHIFT+H'
+            //   },
+
+
             // list: List,
             // embed: Embed,
             // quotes: Quotes
@@ -52,7 +56,7 @@ const Editor = ({data, setData, placehold}) => {
         placeholder: placehold,
         onReady: () => {console.log('Editor.js is ready to work!')},
         onChange: (api, event) => {
-            console.log('Now I know that Editor\'s content changed!', event)
+            // console.log('Now I know that Editor\'s content changed!', event)
         },
     })
 
