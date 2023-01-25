@@ -12,17 +12,12 @@ import "slick-carousel/slick/slick-theme.css";
 import Routes from "./Routes/Routes";
 import PlusButton from "./components/custom/BasicComponents/PlusButton";
 
-
-
-
-
 function App({mode}) {
   const theme = useTheme();
 
   function onPlusButton() {
     alert("eee")
 	}
-
   useEffect(()=> {
     apiProjects.get().then(resp => setProjectsList(resp.data))
   }, [])
