@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { getProjects, delProject } from '../../store/actions/projects'
+
 
 import { changeListBreadCrumbs } from "../../store/actions/breadCrumbs";
 import Box from "@mui/material/Box";
@@ -29,8 +31,9 @@ import image18 from "../../images/LayerZero.jpg";
 import image19 from "../../images/ObolLabs.jpg";
 import image20 from "../../images/Vega.jpg";
 import image21 from "../../images/Aleo.png";
+import image23 from "../../images/Polkadot.png";
 
-function Home({ changeListBreadCrumbs, user }) {
+function Home({ changeListBreadCrumbs, user, dataProjects }) {
 
 
 	const [slidesToShow, setSlidesToShow] = React.useState(5)
@@ -83,6 +86,36 @@ function Home({ changeListBreadCrumbs, user }) {
 		>
 			<Paper elevation={8} className="home__slider__wrap">
 				<Divider />
+
+				<div className="slider_name_wrap">
+
+					<h3>Проекты</h3>
+					<div className="home__slider__more"><Link to="/testnet">Смотреть все</Link></div>
+				</div>
+				<div className="home__slider__container">
+					<Slider {...settings}>
+						<div className="home__slider_item__container">
+							<div className="home__slider_item__image" style={{backgroundImage: `url("${image23}")`}}></div>
+							<div className="home__slider_item__title">Polkadot</div>
+						</div>
+						{dataProjects.map((item)=> {
+							return (
+									<div className="home__slider_item__container">
+										<div className="home__slider_item__image" style={{backgroundImage: `url("${image9}")`}}></div>
+										<div className="home__slider_item__title">{item.title_project}</div>
+									</div>
+									)
+						})}
+						<div className="home__slider_item__container">
+							<div className="home__slider_item__image" style={{backgroundImage: `url("${image9}")`}}></div>
+							<div className="home__slider_item__title">title_project</div>
+						</div>
+						
+					</Slider>
+				</div>
+
+				<Divider />
+
 				<div className="slider_name_wrap">
 
 					<h3>Тестнеты</h3>
@@ -204,9 +237,9 @@ function Home({ changeListBreadCrumbs, user }) {
 	);
 }
 
-function mapStateToProps({ auth }) {
+function mapStateToProps({ auth, projects }) {
 	return {
-
+		dataProjects: projects.list
 	};
 }
 
